@@ -6,7 +6,8 @@ public class Todo
     public string Name { get; set; } = string.Empty;
     public bool IsComplete { get; set; }
 
-    // Agora públicos para o EF
     public DateTime Data { get; set; } = DateTime.Now;
-    public string Email { get; set; } = string.Empty;
+
+    public string? Telefone { get; set; }
+    public string? Email { get; set; }
 }

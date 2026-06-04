@@ -71,6 +71,7 @@ DELETE {{TodoApi_HostAddress}}/todoitems/1
 # Cria um novo item no BD.
 # Método HTTP: POST
 # Endpoint: /todoitems
+# Criação do campo email
 POST {{TodoApi_HostAddress}}/todoitems
 Content-Type: application/json
 Accept: application/json
@@ -78,5 +79,21 @@ Accept: application/json
 {
   "name": "Fazer trabalho de TINCO",
   "isComplete": false,
+  "email": "jorge@email.com"
+}
+
+###
+# Cria um novo item no BD.
+# Método HTTP: POST
+# Endpoint: /todoitems
+# Criação do campo email
+POST {{TodoApi_HostAddress}}/todoitems
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name": "Fazer trabalho de TINCO",
+  "isComplete": false,
+  "telefone": "(16) 99999-9999",
   "email": "jorge@email.com"
 }

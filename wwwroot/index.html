@@ -1,0 +1,44 @@
+﻿<script>
+// @ts-nocheck
+
+const form = document.getElementById("form");
+const list = document.getElementById("list");
+
+const nameInput = document.getElementById("name");
+const telefoneInput = document.getElementById("telefone");
+const emailInput = document.getElementById("email");
+const isCompleteInput = document.getElementById("isComplete");
+
+const API_URL = "http://localhost:5136/todoitems";
+
+form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    await axios.post(API_URL, {
+        name: nameInput.value,
+        telefone: telefoneInput.value,
+        email: emailInput.value,
+        isComplete: isCompleteInput.checked
+    });
+
+    form.reset();
+    load();
+});
+
+async function load() {
+    const res = await axios.get(API_URL);
+
+    list.innerHTML = "";
+
+    res.data.forEach(item => {
+        const li = document.createElement("li");
+
+        li.innerHTML =
+            `<b>${item.name}</b> - 📞 ${item.telefone || ""} - ✉️ ${item.email || ""} - ${item.isComplete ? "✔️" : "❌"}`;
+
+        list.appendChild(li);
+    });
+}
+
+load();
+</script>
