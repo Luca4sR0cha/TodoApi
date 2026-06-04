@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using System.Diagnostics;
 using TodoApi.Data;
 using TodoApi.Dtos;
 using TodoApi.Models;
@@ -29,8 +30,8 @@ app.UseDefaultFiles();   // abre index.html automaticamente
 app.UseStaticFiles();    // serve wwwroot
 app.UseCors("AllowAll");
 
-app.Urls.Clear();
-app.Urls.Add("http://localhost:5136");
+//app.Urls.Clear();
+//app.Urls.Add("http://localhost:5136");
 
 var todoItems = app.MapGroup("/todoitems");
 
