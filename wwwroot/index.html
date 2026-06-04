@@ -1,44 +1,28 @@
-﻿<script>
-// @ts-nocheck
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo API</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
 
-const form = document.getElementById("form");
-const list = document.getElementById("list");
+    <div class="container">
+        <h1>Lista de Tarefas</h1>
 
-const nameInput = document.getElementById("name");
-const telefoneInput = document.getElementById("telefone");
-const emailInput = document.getElementById("email");
-const isCompleteInput = document.getElementById("isComplete");
+        <div class="formulario">
+            <input type="text" id="nomeTarefa" placeholder="Nome da tarefa">
+            <input type="email" id="email" placeholder="E-mail (opcional)">
+            <input type="tel" id="telefone" placeholder="Telefone (opcional)">
+            <button onclick="adicionarTarefa()">Adicionar</button>
+        </div>
 
-const API_URL = "http://localhost:5136/todoitems";
+        <ul id="listaTarefas"></ul>
+    </div>
 
-form.addEventListener("submit", async (e) => {
-    e.preventDefault();
+    <script src="script.js"></script>
 
-    await axios.post(API_URL, {
-        name: nameInput.value,
-        telefone: telefoneInput.value,
-        email: emailInput.value,
-        isComplete: isCompleteInput.checked
-    });
-
-    form.reset();
-    load();
-});
-
-async function load() {
-    const res = await axios.get(API_URL);
-
-    list.innerHTML = "";
-
-    res.data.forEach(item => {
-        const li = document.createElement("li");
-
-        li.innerHTML =
-            `<b>${item.name}</b> - 📞 ${item.telefone || ""} - ✉️ ${item.email || ""} - ${item.isComplete ? "✔️" : "❌"}`;
-
-        list.appendChild(li);
-    });
-}
-
-load();
-</script>
+</body>
+</html>
